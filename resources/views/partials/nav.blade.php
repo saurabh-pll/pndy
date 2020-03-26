@@ -10,6 +10,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             {{-- Left Side Of Navbar --}}
             <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                <a class="nav-link" href="{{url('/home')}}">Dashboard</a>
+                </li>
                 @role('admin')
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -23,6 +26,11 @@
                             <a class="dropdown-item {{ Request::is('users', 'users/' . Auth::user()->id, 'users/' . Auth::user()->id . '/edit') ? 'active' : null }}" href="{{ url('/users') }}">
                                 {!! trans('titles.adminUserList') !!}
                             </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item {{ Request::is('tests', 'tests/' . Auth::user()->id, 'tests/' . Auth::user()->id . '/edit') ? 'active' : null }}" href="{{ url('/tests') }}">
+                                Tests Administration
+                            </a>
+                            
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item {{ Request::is('users/create') ? 'active' : null }}" href="{{ url('/users/create') }}">
                                 {!! trans('titles.adminNewUser') !!}
@@ -58,13 +66,33 @@
                         </div>
                     </li>
                 @endrole
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('tests') ? 'active' : null }}" href="{{ url('/tests') }}">
+                        Tests 
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('labs') ? 'active' : null }}" href="{{ url('/labs') }}">
+                        Diagnostic Labs 
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('chemists') ? 'active' : null }}" href="{{ url('/chemists') }}">
+                        Chemists 
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('patients') ? 'active' : null }}" href="{{ url('/patients') }}">
+                        Patients 
+                    </a>
+                </li>
             </ul>
             {{-- Right Side Of Navbar --}}
             <ul class="navbar-nav ml-auto">
                 {{-- Authentication Links --}}
                 @guest
                     <li><a class="nav-link" href="{{ route('login') }}">{{ trans('titles.login') }}</a></li>
-                    <li><a class="nav-link" href="{{ route('register') }}">{{ trans('titles.register') }}</a></li>
+                    {{-- <li><a class="nav-link" href="{{ route('register') }}">{{ trans('titles.register') }}</a></li> --}}
                 @else
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

@@ -25,8 +25,12 @@
         @endrole
 
     </div>
-    <div class="card-body">
-        <h2 class="lead">
+     <div class="card-body">
+         <p>Total Test = {{$testcount}} </p>
+         <p>Total Patient = {{$patientcount}} </p>
+         <p>Total Diagnostic Lab = {{$labs}} </p>
+         <p>Total Chemist = {{$chemists}} </p>
+      {{--  <h2 class="lead">
             {{ trans('auth.loggedIn') }}
         </h2>
         <p>
@@ -117,6 +121,6 @@
             </p>
 
         @endrole
-
-    </div>
+--}}
+    </div> 
 </div>

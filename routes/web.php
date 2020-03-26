@@ -39,6 +39,13 @@ Route::group(['middleware' => ['web', 'activity', 'checkblocked']], function () 
     Route::get('/re-activate/{token}', ['as' => 'user.reactivate', 'uses' => 'RestoreUserController@userReActivate']);
 });
 
+Route::group(['middleware' => ['auth', 'activated', 'activity']], function () {
+    Route::resource('patients', 'PatientController');
+    Route::resource('tests', 'TestController');
+    Route::resource('labs', 'DiagnosticCentreController');
+    Route::resource('chemists', 'ChemistController');
+});
+
 // Registered and Activated User Routes
 Route::group(['middleware' => ['auth', 'activated', 'activity', 'checkblocked']], function () {
 
@@ -124,6 +131,7 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
         ],
     ]);
 
+    
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
     Route::get('routes', 'AdminDetailsController@listRoutes');
     Route::get('active-users', 'AdminDetailsController@activeUsers');

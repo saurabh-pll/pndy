@@ -11,7 +11,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>Delete this user?</p>
+        <p>Delete this record?</p>
       </div>
       <div class="modal-footer">
         {!! Form::button('<i class="fa fa-fw fa-close" aria-hidden="true"></i> Cancel', array('class' => 'btn btn-outline pull-left btn-light', 'type' => 'button', 'data-dismiss' => 'modal' )) !!}
