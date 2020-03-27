@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel Auth</title>
+        <title>Petronet Nishulk Dawa Yojana</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -76,29 +76,15 @@
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
-                        {{-- @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif --}}
                     @endauth
                 </div>
             @endif
             <div class="content">
+                <img src="./images/pll.png" style="width:150px">
                 <div class="title m-b-md">
                    Petronet Nishulk Dawa Yojana
-                    <small>
-                        
-                    </small>
                 </div>
-                {{-- <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div> --}}
+
             </div>
         </div>
     </body>

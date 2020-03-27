@@ -29,10 +29,13 @@ class UserController extends Controller
         $user = Auth::user();
 
         $testcount = Test::count();
+        if(!$testcount) $testcount = 0;
         $patientcount = Patient::count();
+        if(!$patientcount) $patientcount = 0;
         $labs = DiagnosticCentre::count();
+        if (!$labs) $labs = 0;
         $chemists = Chemist::count();
-
+        if (!$chemists) $chemists = 0;
         if ($user->isAdmin()) {
             return view('pages.admin.home');
         }

@@ -10,6 +10,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             {{-- Left Side Of Navbar --}}
             <ul class="navbar-nav mr-auto">
+                @guest
+                @else 
                 <li class="nav-item">
                 <a class="nav-link" href="{{url('/home')}}">Dashboard</a>
                 </li>
@@ -86,6 +88,7 @@
                         Patients 
                     </a>
                 </li>
+                @endguest
             </ul>
             {{-- Right Side Of Navbar --}}
             <ul class="navbar-nav ml-auto">
