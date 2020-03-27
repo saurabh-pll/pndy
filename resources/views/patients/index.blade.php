@@ -65,6 +65,8 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name (Address)</th>
+                                    <th>Age</th>
+                                    <th>Gender</th>
                                     <th>State</th>
                                     <th>Mobile No.</th>
                                     <th>Category</th>
@@ -80,14 +82,16 @@
                                         {{$patient->city}}, <br>
                                         pin: {{$patient->pincode}}
                                     </td>
+                                    <td>{{$patient->age}} years</td>
+                                    <td>{{$patient->sex}}</td>
                                     <td>{{$patient->state}}</td>
-                                    <td>{{$patient->mobile}}</td>
+                                    <td>+91 {{$patient->mobile}}</td>
                                     <td>
                                         @foreach ($patient->categories as $category)
                                             {{$category->name}}<br>
                                         @endforeach
                                     </td>
-                                    <td>{{$patient->aadhar_no}}</td>
+                                <td>{{$patient->aadhar_no}} <br> <a href="{{url('storage/app/files' . $patient->file)}}">Uploaded Document</a> </td>
                                     
                                         <td>
                                            

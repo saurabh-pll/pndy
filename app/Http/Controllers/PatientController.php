@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Patient;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PatientController extends Controller
 {
@@ -25,7 +27,8 @@ class PatientController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return View('patients.create', compact('categories'));
     }
 
     /**
@@ -36,7 +39,39 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255|unique:diagnostic_centres',
+            'age' => 'required|numeric',
+            'sex' => 'required',
+            'address' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'pincode'  => 'required|numeric',
+            'mobile'  => 'required|numeric',
+            'aadhar_no'   => 'nullable|numeric',
+        ]);
+        $uploadedFile = $request->file('file');
+        $filename = time().$uploadedFile->getClientOriginalName();
+
+        Storage::disk('local')->putFileAs(
+        'files/'.$filename,
+        $uploadedFile,
+        $filename
+        );
+        $patient = Patient::create([
+            'name' => $request->get('name'),
+            'age' => $request->get('age'),
+            'sex' => $request->get('sex'),
+            'address' => $request->get('address'),
+            'city' => $request->get('city'),
+            'state' => $request->get('state'),
+            'pincode'  => $request->get('pincode'),
+            'mobile'  => $request->get('mobile'),
+            'aadhar_no'   => $request->get('aadhar_no'),
+            'file' => $filename,
+        ]);
+        $patient->categories()->attach($request->categories);
+        return redirect('/patients')->with('success', 'Patient is successfully saved');
     }
 
     /**
