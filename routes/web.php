@@ -14,6 +14,9 @@
 */
 
 // Homepage Route
+
+
+
 Route::group(['middleware' => ['web', 'checkblocked']], function () {
     Route::get('/', 'WelcomeController@welcome')->name('welcome');
 });
@@ -44,6 +47,9 @@ Route::group(['middleware' => ['auth', 'activated', 'activity']], function () {
     Route::resource('tests', 'TestController');
     Route::resource('labs', 'DiagnosticCentreController');
     Route::resource('chemists', 'ChemistController');
+    Route::get('/patients/{patient}/testreq', 'RequestController@create');
+    Route::post('/patients/testreq', 'RequestController@store')->name('patient.testreq');
+    Route::post('search-labs', 'RequestController@searchLab')->name('search-labs');
 });
 
 // Registered and Activated User Routes
@@ -113,6 +119,7 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
         ],
     ]);
 
+    Route::resource('hospitals', 'HospitalController');
     Route::resource('users', 'UsersManagementController', [
         'names' => [
             'index'   => 'users',

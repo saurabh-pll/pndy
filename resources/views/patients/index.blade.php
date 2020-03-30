@@ -97,9 +97,12 @@
                                            
                                             {!! Form::open(array('url' => 'patients/' . $patient->id, 'class' => '', 'data-toggle' => 'tooltip', 'title' => 'Delete')) !!}
                                             {!! Form::hidden('_method', 'DELETE') !!}
-                                            {{-- <a class="btn btn-sm btn-success " href="{{ URL::to('patients/' . $patient->id) }}" data-toggle="tooltip" title="Show">
-                                                Show
-                                            </a> --}}
+                                            <a class="btn btn-sm btn-success " href="{{ URL::to('patients/' . $patient->id . '/testreq') }}" data-toggle="tooltip" title="Show">
+                                                Add Diagnostic Test Request
+                                            </a>
+                                            <a class="btn btn-sm btn-warning " href="{{ URL::to('patients/' . $patient->id . '/testreq') }}" data-toggle="tooltip" title="Show">
+                                                Add Medicine Request
+                                            </a>
                                             <a class="btn btn-sm btn-info " href="{{ URL::to('patients/' . $patient->id . '/edit') }}" data-toggle="tooltip" title="Edit">
                                                 Edit
                                             </a>

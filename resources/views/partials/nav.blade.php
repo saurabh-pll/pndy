@@ -29,8 +29,8 @@
                                 {!! trans('titles.adminUserList') !!}
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item {{ Request::is('tests', 'tests/' . Auth::user()->id, 'tests/' . Auth::user()->id . '/edit') ? 'active' : null }}" href="{{ url('/tests') }}">
-                                Tests Administration
+                            <a class="dropdown-item {{ Request::is('hospitals') ? 'active' : null }}" href="{{ url('/hospitals') }}">
+                                Hospital Administration
                             </a>
                             
                             <div class="dropdown-divider"></div>
