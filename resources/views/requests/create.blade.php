@@ -97,6 +97,12 @@
                             @endif
                         </div>
                     </div>
+                    <div class="form-group row has-feedback {{ $errors->has('prescription') ? ' has-error ' : '' }}">
+                        {!! Form::label('prescription', 'Upload Prescription', array('class' => 'col-md-3 control-label')); !!}
+                        <div class="col-md-9">
+                            {!! Form::file('prescription', NULL, array('id'=>'prescription', 'class' => 'form-control', 'placeholder' => 'Select prescription')) !!}
+                        </div>
+                    </div>
                     <div class="form-group has-feedback row {{ $errors->has('test_id') ? ' has-error ' : '' }}">
                         {!! Form::label('test_id', 'Diagnostic Tests', array('class' => 'col-md-3 control-label')); !!}
                         <div class="col-md-9">
@@ -143,6 +149,42 @@
                             @endif
                         </div>
                     </div>
+                    <div class="form-group has-feedback row {{ $errors->has('allotted_date') ? ' has-error ' : '' }}">
+                        {!! Form::label('allotted_date', 'Allotted Date', array('class' => 'col-md-3 control-label')); !!}
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                {!! Form::date('allotted_date', NULL, array('id' => 'allotted_date', 'class' => 'form-control', 'placeholder' => 'Enter allotted_date')) !!}
+                                <div class="input-group-append">
+                                    <label for="allotted_date" class="input-group-text">
+                                        <i class="fa fa-fw fa-calendar" aria-hidden="true"></i>
+                                    </label>
+                                </div>
+                            </div>
+                            @if ($errors->has('allotted_date'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('allotted_date') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback row {{ $errors->has('allotted_time') ? ' has-error ' : '' }}">
+                        {!! Form::label('allotted_time', 'Allotted Time', array('class' => 'col-md-3 control-label')); !!}
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                {!! Form::time('allotted_time', NULL, array('id' => 'allotted_time', 'class' => 'form-control', 'placeholder' => 'Enter allotted_time')) !!}
+                                <div class="input-group-append">
+                                    <label for="allotted_time" class="input-group-text">
+                                        <i class="fa fa-fw fa-calendar" aria-hidden="true"></i>
+                                    </label>
+                                </div>
+                            </div>
+                            @if ($errors->has('allotted_time'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('allotted_time') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
                     {!! Form::button('Submit', array('class' => 'btn btn-success margin-bottom-1 mb-1 float-right','type' => 'submit' )) !!}
                     {!! Form::close() !!}
                 </div>
@@ -170,6 +212,8 @@ $(function(){
             type:'POST',
             url: "{{ route('search-labs') }}",
             data: fd,
+            processData: false,
+            contentType: false,
             success: function (result) {
                 let jsonData = JSON.parse(result);
                 if (jsonData.length != 0) {

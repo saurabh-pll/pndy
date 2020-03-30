@@ -27,7 +27,9 @@ class RequestController extends Controller
     public function searchLab(Request $request)
     {
         $testID = $request->input('test_id');
-        $labs = DiagnosticCentre::whereHas('tests', $testID)->with('tests')->get();
+        $labs = DiagnosticCentre::whereHas('tests', function ($q) use ($testID){
+            $q->where('id', $testID);
+        })->get();
         return response()->json([json_encode($labs),], Response::HTTP_OK);
     }
 }
