@@ -40,7 +40,7 @@ class PatientController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:255|unique:diagnostic_centres',
+            'name' => 'required|max:255',
             'age' => 'required|numeric',
             'sex' => 'required',
             'address' => 'required',
@@ -48,16 +48,16 @@ class PatientController extends Controller
             'state' => 'required',
             'pincode'  => 'required|numeric',
             'mobile'  => 'required|numeric',
-            'aadhar_no'   => 'nullable|numeric',
+            'aadhar_no'   => 'nullable|numeric|unique:patients',
+            'file' => 'required|mimes:pdf,jpeg,png,jpg,bmp|max:2048'
         ]);
         $uploadedFile = $request->file('file');
-        $filename = time().$uploadedFile->getClientOriginalName();
+        $filename = time().time().'.'.$uploadedFile->getClientOriginalExtension();
 
-        Storage::disk('local')->putFileAs(
-        'files/'.$filename,
-        $uploadedFile,
-        $filename
-        );
+        $target_path    =   public_path('/uploads/');
+        
+        $uploadedFile->move($target_path, $filename);
+
         $patient = Patient::create([
             'name' => $request->get('name'),
             'age' => $request->get('age'),
@@ -71,7 +71,7 @@ class PatientController extends Controller
             'file' => $filename,
         ]);
         $patient->categories()->attach($request->categories);
-        return redirect('/patients')->with('success', 'Patient is successfully saved');
+        return redirect('/patients/'. $patient->id.  '/testreq')->with('success', 'Patient is successfully saved');
     }
 
     /**

@@ -91,7 +91,7 @@
                                             {{$category->name}}<br>
                                         @endforeach
                                     </td>
-                                <td>{{$patient->aadhar_no}} <br> <a href="{{url('storage/app/files/' . $patient->file)}}">Uploaded Document</a> </td>
+                                <td>{{$patient->aadhar_no}} <br> <a href="/uploads/{{ $patient->file}}">Uploaded Document</a> </td>
                                     
                                         <td>
                                            

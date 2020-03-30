@@ -18,6 +18,7 @@
                 <div class="card-body">
                     {!! Form::open(array('route' => 'patient.testreq', 'files' => 'true', 'method' => 'POST', 'role' => 'form', 'class' => 'needs-validation')) !!}
                     {!! csrf_field() !!}
+                    {!! Form::hidden('patient_id', $patient->id)!!}
                     <div class="form-group has-feedback row {{ $errors->has('hospital_id') ? ' has-error ' : '' }}">
                         {!! Form::label('hospital_id', 'Hospital', array('class' => 'col-md-3 control-label')); !!}
                         <div class="col-md-9">
