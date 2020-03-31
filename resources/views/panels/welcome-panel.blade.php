@@ -1,15 +1,4 @@
-@php
-
-    $levelAmount = 'level';
-
-    if (Auth::User()->level() >= 2) {
-        $levelAmount = 'levels';
-
-    }
-
-@endphp
-
-<div class="card">
+{{-- <div class="card">
     <div class="card-header @role('admin', true) bg-secondary text-white @endrole">
 
         Welcome {{ Auth::user()->name }}
@@ -25,102 +14,52 @@
         @endrole
 
     </div>
-     <div class="card-body">
-         <p>Total Test = {{$testcount ?? ''}} </p>
-         <p>Total Patient = {{$patientcount ?? ''}} </p>
-         <p>Total Diagnostic Lab = {{$labs ?? ''}} </p>
-         <p>Total Chemist = {{$chemists ?? ''}} </p>
-      {{--  <h2 class="lead">
-            {{ trans('auth.loggedIn') }}
-        </h2>
-        <p>
-            <em>Thank you</em> for checking this project out. <strong>Please remember to star it!</strong>
-        </p>
-        <p>
-            <iframe src="https://ghbtns.com/github-btn.html?user=jeremykenedy&repo=laravel-auth&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px" style="margin: 0px 0 -3px .5em;"></iframe>
-        </p>
-        <p>
-            This page route is protected by <code>activated</code> middleware. Only accounts with activated emails are able pass this middleware.
-        </p>
-        <p>
-            <small>
-                Users registered via Social providers are by default activated.
-            </small>
-        </p>
-
-        <hr>
-
-        <p>
-            You have
-                <strong>
-                    @role('admin')
-                       Admin
-                    @endrole
-                    @role('user')
-                       User
-                    @endrole
-                </strong>
-            Access
-        </p>
-
-        <hr>
-
-        <p>
-            You have access to {{ $levelAmount }}:
-            @level(5)
-                <span class="badge badge-primary margin-half">5</span>
-            @endlevel
-
-            @level(4)
-                <span class="badge badge-info margin-half">4</span>
-            @endlevel
-
-            @level(3)
-                <span class="badge badge-success margin-half">3</span>
-            @endlevel
-
-            @level(2)
-                <span class="badge badge-warning margin-half">2</span>
-            @endlevel
-
-            @level(1)
-                <span class="badge badge-default margin-half">1</span>
-            @endlevel
-        </p>
-
-        @role('admin')
-
-            <hr>
-
-            <p>
-                You have permissions:
-                @permission('view.users')
-                    <span class="badge badge-primary margin-half margin-left-0">
-                        {{ trans('permsandroles.permissionView') }}
-                    </span>
-                @endpermission
-
-                @permission('create.users')
-                    <span class="badge badge-info margin-half margin-left-0">
-                        {{ trans('permsandroles.permissionCreate') }}
-                    </span>
-                @endpermission
-
-                @permission('edit.users')
-                    <span class="badge badge-warning margin-half margin-left-0">
-                        {{ trans('permsandroles.permissionEdit') }}
-                    </span>
-                @endpermission
-
-                @permission('delete.users')
-                    <span class="badge badge-danger margin-half margin-left-0">
-                        {{ trans('permsandroles.permissionDelete') }}
-                    </span>
-                @endpermission
-
-            </p>
-
-        @endrole
---}}
-    </div> 
-</div>
+     <div class="card-body"> --}}
+        <div class="row mb-3">
+            <div class="col-xl-3 col-lg-3 col-md-6">
+                <div class="card card-inverse card-success">
+                    <div class="card-block bg-success">
+                        <div class="rotate">
+                            <i class="fa fa-user fa-5x"></i>
+                        </div>
+                        <h6 class="text-uppercase">Total Patients</h6>
+                        <h1 class="display-1">{{$patientcount ?? ''}}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6">
+                <div class="card card-inverse card-danger">
+                    <div class="card-block bg-danger">
+                        <div class="rotate">
+                            <i class="fa fa-medkit fa-5x"></i>
+                        </div>
+                        <h6 class="text-uppercase">Total Diagnostic Lab</h6>
+                        <h1 class="display-1">{{$labs ?? ''}}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6">
+                <div class="card card-inverse card-info">
+                    <div class="card-block bg-info">
+                        <div class="rotate">
+                            <i class="fa fa-stethoscope fa-5x"></i>
+                        </div>
+                        <h6 class="text-uppercase">Total Tests</h6>
+                        <h1 class="display-1">{{$testcount ?? ''}}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6">
+                <div class="card card-inverse card-warning">
+                    <div class="card-block bg-warning">
+                        <div class="rotate">
+                            <i class="fa fa-plus-square fa-5x"></i>
+                        </div>
+                        <h6 class="text-uppercase">Total Chemist</h6>
+                        <h1 class="display-1">{{$chemists ?? ''}}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{-- </div> 
+</div> --}}
