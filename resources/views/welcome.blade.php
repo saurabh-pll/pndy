@@ -80,9 +80,10 @@
                 </div>
             @endif
             <div class="content">
-                <img src="./images/pll.png" style="width:150px">
+                <img src="./images/pndy_logo.png" style="width:300px">
                 <div class="title m-b-md">
-                   Petronet Nishulk Dawa Yojana
+                   Petronet Nishulk Dawa Yojana <br>
+                   पेट्रोनेट निःशुल्क दवा योजना 
                 </div>
 
             </div>
