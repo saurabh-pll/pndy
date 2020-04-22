@@ -137,4 +137,6 @@ class DiagnosticCentreController extends Controller
         $lab->tests()->detach();
         $lab->delete();
     }
+
+    
 }

@@ -50,7 +50,7 @@
             <div class="col-12 col-lg-12 ">
 
                 @include('panels.welcome-panel')
-
+               
             </div>
         </div>
     </div>

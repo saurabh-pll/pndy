@@ -50,6 +50,7 @@ Route::group(['middleware' => ['auth', 'activated', 'activity']], function () {
     Route::get('/patients/{patient}/testreq', 'RequestController@create');
     Route::post('/patients/testreq', 'RequestController@store')->name('patient.testreq');
     Route::post('search-labs', 'RequestController@searchLab')->name('search-labs');
+    Route::post('search-test', 'TestreqController@searchByUniqueID')->name('search.test');
 });
 
 // Registered and Activated User Routes

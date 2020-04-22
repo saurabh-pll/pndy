@@ -15,5 +15,10 @@ class Request extends Model
     {
         return $this->hasMany('App\Testreq');
     }
+
+    public function hospital()
+    {
+        return $this->belongsTo('App\Hospital');
+    }
     
 }

@@ -78,6 +78,7 @@
                                         <th class="hidden-xs">{!! trans('usersmanagement.users-table.fname') !!}</th>
                                         <th class="hidden-xs">{!! trans('usersmanagement.users-table.lname') !!}</th>
                                         <th>{!! trans('usersmanagement.users-table.role') !!}</th>
+                                    <th>{{__('Affiliation')}}</th>
                                         <th class="hidden-sm hidden-xs hidden-md">{!! trans('usersmanagement.users-table.created') !!}</th>
                                         <th class="hidden-sm hidden-xs hidden-md">{!! trans('usersmanagement.users-table.updated') !!}</th>
                                         <th>{!! trans('usersmanagement.users-table.actions') !!}</th>
@@ -107,6 +108,7 @@
                                                     <span class="badge badge-{{$badgeClass}}">{{ $user_role->name }}</span>
                                                 @endforeach
                                             </td>
+                                        <td>{{$user->Affiliation->name?? 'No Affiliation'}}</td>
                                             <td class="hidden-sm hidden-xs hidden-md">{{$user->created_at}}</td>
                                             <td class="hidden-sm hidden-xs hidden-md">{{$user->updated_at}}</td>
                                             <td>

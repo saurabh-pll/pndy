@@ -37,7 +37,7 @@ class UsersManagementController extends Controller
             $users = User::all();
         }
         $roles = Role::all();
-
+ 
         return View('usersmanagement.show-users', compact('users', 'roles'));
     }
 

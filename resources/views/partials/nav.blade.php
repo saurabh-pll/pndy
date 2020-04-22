@@ -69,6 +69,7 @@
                         </div>
                     </li>
                 @endrole
+                @role('user')
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('tests') ? 'active' : null }}" href="{{ url('/tests') }}">
                         Tests 
@@ -89,6 +90,17 @@
                         Patients 
                     </a>
                 </li>
+                @endrole
+               @role('lab')
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Conduct Test</a>
+                </li>
+                @endrole
+                @role('chemist')
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Issue Medicine</a>
+                </li>
+                @endrole
                 @endguest
             </ul>
             {{-- Right Side Of Navbar --}}

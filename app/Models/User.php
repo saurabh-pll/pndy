@@ -76,6 +76,20 @@ class User extends Authenticatable
     }
 
     /**
+     * User Affiliation Relationships
+     */
+    public function affiliation()
+    {
+        if ($this->hasRole('lab')){
+            return $this->hasOne('App\DiagnosticCentre');
+        } elseif ($this->hasRole('chemist')){
+            return $this->hasOne('App\Chemist');
+        } else {
+            return $this->hasOne('App\DiagnosticCentre');
+        }
+    }
+
+    /**
      * User Profile Relationships.
      *
      * @var array

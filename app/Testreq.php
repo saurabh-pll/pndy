@@ -15,4 +15,6 @@ class Testreq extends Model
     {
         return $this->belongsTo('App\Request');
     }
+
+   
 }
