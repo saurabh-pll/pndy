@@ -100,8 +100,8 @@
                     </div>
                     <div class="card-body">
                      <div id="sreachDiv">
-                     {!! Form::open(array('route' => 'search.test', 'method' => 'POST', 'role' => 'form', 'id' => 'search_form', 'class' => 'needs-validation')) !!}
-                     {!! csrf_field() !!}
+                     {{-- {!! Form::open(array('role' => 'form', 'id' => 'search_form', 'class' => 'needs-validation')) !!}
+                     {!! csrf_field() !!} --}}
                      <div class="form-group has-feedback row {{ $errors->has('unique_id') ? ' has-error ' : '' }}">
                          {{-- {!! Form::label('unique_id', 'Enter Unique ID', array('class' => 'col-md-3 control-label')); !!} --}}
                          <div class="col-md-9">
@@ -113,10 +113,10 @@
                              @endif
                          </div>
                          <div class="col-md-3">
-                             {!! Form::button('Submit', array('class' => 'btn btn-success margin-bottom-1 mb-1 float-right','type' => 'submit' )) !!}
+                             {!! Form::button('Submit', array('id' => 'btnsearch' , 'class' => 'btn btn-success margin-bottom-1 mb-1 float-right','type' => 'submit' )) !!}
                          </div>
                      </div>
-                     {!! Form::close() !!}
+                     {{-- {!! Form::close() !!} --}}
                     </div>
                     </div>
                     
@@ -131,29 +131,12 @@
 
 @section('footer_scripts')
 <script>
-    // $(function(){
-    //     var searchform = $("#search_form");
-    //     var resultsContainer = $("#resultDiv");
-
-    //     searchform.submit(function(e){
-    //         e.preventDefault();
-    //         resultsContainer.html('');
-    //         $.ajax({
-    //             type:'POST',
-    //             url: "{{ route('search.test') }}",
-    //             data: searchform.serialize(),
-    //             success: function (result) {
-    //                 let jsonData = JSON.parse(result);
-    //                 resultsContainer.append('<table><tr><td>Patient Name</td><td>' + jsonData.patient.name + 
-    //                     '</td></tr>');
-    //             },
-    //             error: function (response, status, error) {
-    //                 if (response.status === 422) {
-    //                     resultsContainer.append("Request ID not found!");
-    //                 }
-    //             },
-    //         });
-    //     });
-    // });
+    $(function(){
+        $("#btnsearch").on ('click', function(e){
+            e.preventDefault();
+            var uid = $("#unique_id").val();
+            window.location.href = '/testreq/' + uid;
+        });
+    });
 </script>
 @endsection
